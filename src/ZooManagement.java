@@ -2,26 +2,31 @@ import java.util.Scanner;
 
 public class ZooManagement {
     public static void main(String[] args) {
-        int nbrCages = 20;
-        String zooName = "my zoo";
+        Zoo myZoo = new Zoo("belvedere","Tunis");
+        Zoo myZootwo = new Zoo("belvedere2","Tunis");
 
-        System.out.println(zooName + " comporte " + nbrCages + " cages");
+        //LION
+        Animal lion = new Animal("katous","cat",4,true);
+        myZoo.addAnimal(lion);
+        System.out.println("Recherche de Lion: " + myZoo.searchAnimal(lion));
 
-        Scanner scanner = new Scanner(System.in);
+        //LION2
+        Animal lionn = new Animal("katous","cat",4,true);
+        myZoo.addAnimal(lionn);
+        System.out.println("Recherche du Lion dupliqué: " + myZoo.searchAnimal(lionn));
 
-        System.out.print("Entrez le nom du zoo : ");
-        zooName = scanner.nextLine();
 
-        System.out.print("Entrez le nombre de cages : ");
-        nbrCages = scanner.nextInt();
-
-        if (nbrCages <= 0) {
-            System.out.println("Le nombre de cages doit être supérieur à zéro.");
-            nbrCages = 20;
+        if (myZoo.isZooFull()) {
+            System.out.println("Le zoo est plein");
+        } else {
+            System.out.println("Le zoo n'est pas plein");
         }
 
-        System.out.println(zooName + " comporte " + nbrCages + " cages");
+        myZoo.comparerZoo(myZoo, myZootwo).displayZoo();
 
-        scanner.close();
+        //myZoo.displayZoo();
+        //System.out.println(myZoo);
+        //System.out.print(myZoo.toString());
+
     }
 }
