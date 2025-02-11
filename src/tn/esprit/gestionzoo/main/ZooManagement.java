@@ -17,7 +17,7 @@ public class ZooManagement {
 
         // test duplication
         Animal lionn = new Animal("cat", "katous", 4, true);
-        myZoo.addAnimal(lionn); //message d'erreur
+        myZoo.addAnimal(lionn); //msg d'erreur
 
         if (myZoo.isZooFull()) {
             System.out.println("Le zoo est plein");
