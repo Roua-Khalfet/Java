@@ -1,59 +1,89 @@
 package tn.esprit.gestionzoo.main;
 
 import tn.esprit.gestionzoo.entities.*;
+import tn.esprit.gestionzoo.entities.Zoo;
+
+import java.util.Scanner;
 
 public class ZooManagement {
     public static void main(String[] args) {
-        Zoo myZoo = new Zoo("Belvedere", "Tunis");
-        Zoo myZootwo = new Zoo("Belvederetwo", "Tunis"); // Vérifier si ce zoo est bien utilisé
+        Scanner sc = new Scanner(System.in);
+        // Création d'un zoo
+        Zoo myZoo = new Zoo("Tunis tn.esprit.gestionzoo.entities.Zoo", "Tunis");
+/*
+        // Création de quelques animaux
+        Dolphin dolphin = new Dolphin("aaa", 5, 20);
+        Penguin penguin = new Penguin("bbbb", 3, 10);
 
-        // Âge négatif
-        Animal lion1 = new Animal("cat", "katous", -3, true);
-        if (lion1.getAge() < 0) {
-            System.out.println("Erreur : l'âge de l'animal ne peut pas être négatif.");
-        } else {
-            myZoo.addAnimal(lion1);
-        }
 
-        // Ajout et recherche d'un animal valide
-        Animal lion2 = new Animal("cat", "katous", 4, true);
-        myZoo.addAnimal(lion2);
-        System.out.println("Recherche de Lion: " + myZoo.searchAnimal(lion2));
 
-        // Test de duplication
-        Animal lion3 = new Animal("cat", "katous", 4, true);
-        if (!myZoo.addAnimal(lion3)) {  // Supposons que `addAnimal` retourne `false` en cas d'échec
-            System.out.println("Erreur : Cet animal existe déjà dans le zoo.");
-        }
+        Animal lion = new Animal("Simba", "Lion", 5, true);
+        Animal tiger = new Animal("Raja", "Tiger", 3, true);
+        Animal elephant = new Animal("Dumbo", "Elephant", 10, true);
+        Animal lionCopy = new Animal("Simba", "Lion", 5, true);
 
-        // Vérification si le zoo est plein
-        if (myZoo.isZooFull()) {
-            System.out.println("Le zoo est plein");
-        } else {
-            System.out.println("Le zoo n'est pas plein");
-        }
+        // Test d'ajout d'animaux
+        System.out.println("Ajout du dauphin: " + myZoo.addAnimal(dolphin));
+        System.out.println("Ajout du penguin: " + myZoo.addAnimal(penguin));
 
-        // Comparaison des zoos
-        Zoo zooPlusGrand = myZoo.comparerZoo(myZoo, myZootwo);
-        if (zooPlusGrand != null) {
-            System.out.println("Le zoo avec le plus d'animaux est : " + zooPlusGrand.getName());
-        } else {
-            System.out.println("Les deux zoos ont le même nombre d'animaux.");
-        }
+        System.out.println("Ajout du lion: " + myZoo.addAnimal(lion));
+        System.out.println("Ajout du tigre: " + myZoo.addAnimal(tiger));
+        System.out.println("Ajout de l'éléphant: " + myZoo.addAnimal(elephant));
 
-        System.out.println("----------------------");
+        // Test d'ajout d'un animal avec le même nom
+        System.out.println("Tentative d'ajout d'un lion avec le même nom: " + myZoo.addAnimal(lionCopy));
 
-        Aquatic genericAquatic = new Aquatic("Fish", "Nemo", 2, false, "Ocean");
-        Dolphin flipper = new Dolphin("Flipper", 5, true, "Ocean", 10.5f);
-        Penguin pingu = new Penguin("Pingu", 3, false, "Arctic", 20.0f);
-        Terrestrial simba = new Terrestrial("Feline", "Simba", 4, true, 4);
+        // Affichage des animaux
+        myZoo.displayAnimals();*/
+/*
+        // Test de recherche
+        System.out.println("Recherche de Simba: " + myZoo.searchAnimal(lion));
+        System.out.println("Recherche de Raja: " + myZoo.searchAnimal(tiger));
 
-        System.out.println(flipper);
-        System.out.println(pingu);
-        System.out.println(simba);
+        // Test de suppression
+        System.out.println("Suppression de Simba: " + myZoo.removeAnimal(lion));
 
-        genericAquatic.swim();
-        flipper.swim();
+        // Affichage après suppression
+        myZoo.displayAnimals();
+
+        // Test de comparaison de zoos
+        Zoo secondZoo = new Zoo("Safari", "Ariana");
+        secondZoo.addAnimal(elephant);
+        Zoo plusGrandZoo = Zoo.comparerZoo(myZoo, secondZoo);
+        System.out.println("Le plus grand zoo est: " + plusGrandZoo);
+*/
+        Dolphin dolphin1 = new Dolphin("aaa", 5, 20);
+        Dolphin dolphin2 = new Dolphin("bbb", 7, 25);
+        Penguin penguin1 = new Penguin("ccc", 3, 10);
+        Penguin penguin2 = new Penguin("ddd", 2, 15);
+
+        myZoo.addAquaticAnimal(dolphin1);
+        myZoo.addAquaticAnimal(dolphin2);
+        myZoo.addAquaticAnimal(penguin1);
+        myZoo.addAquaticAnimal(penguin2);
+
+
+        myZoo.addAnimal(dolphin1);
+        myZoo.addAnimal(dolphin2);
+        myZoo.addAnimal(penguin1);
+        myZoo.addAnimal(penguin2);
+
+        myZoo.displayAnimals();
+
+
+        System.out.println("\nAnimaux aquatiques en train de nager:");
+        myZoo.displayAquaticAnimalsSwimming();
+
+        System.out.println("\nProfondeur maximale des pinguins: " + myZoo.maxPenguinSwimmingDepth() + " mètres");
+
+        System.out.println("\nNombre d'animaux aquatiques par type:");
+        myZoo.displayNumberOfAquaticsByType();
+
+        // Test de la méthode equals (Instruction 31)
+        Dolphin dolphin3 = new Dolphin("Flipper", 5, 22);
+        dolphin3.setHabitat(dolphin1.getHabitat());
+        System.out.println("\nTest equals:");
+        System.out.println("dolphin1 equals dolphin3: " + dolphin1.equals(dolphin3));
 
     }
 }

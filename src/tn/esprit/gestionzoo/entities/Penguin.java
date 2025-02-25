@@ -1,21 +1,21 @@
 package tn.esprit.gestionzoo.entities;
 
 public class Penguin extends Aquatic {
-    private float swimmingDepth;
+    float swimmingDepth;
 
-    public Penguin(String name, int age, boolean isMammal, String habitat, float swimmingDepth) {
-        super("Penguin", name, age, isMammal, habitat);
+    public Penguin(String name, int age, float swimmingDepth) {
+        super(name, "Penguin", age, false, "Cold Waters");
         this.swimmingDepth = swimmingDepth;
     }
 
-    public void displayInfo() {
-        super.displayInfo();
-        System.out.println("Swimming Depth: " + swimmingDepth + " m");
+    @Override
+    public void swim() {
+        System.out.println("This penguin is swimming.");
+
     }
+
     @Override
     public String toString() {
-        return super.toString() + " Swimming Depth: " + swimmingDepth + " meters";
+        return super.toString() + ", swimmingDepth=" + swimmingDepth;
     }
-
 }
-
