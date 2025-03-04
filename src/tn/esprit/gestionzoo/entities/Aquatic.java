@@ -3,7 +3,7 @@ package tn.esprit.gestionzoo.entities;
 public abstract class Aquatic extends Animal {
     protected String habitat;
 
-    public Aquatic(String name, String family, int age, boolean isMammal, String habitat) {
+    public Aquatic(String name, String family, int age, boolean isMammal, String habitat) throws InvalidAgeException {
         super(name, family, age, isMammal);
         this.habitat = habitat;
     }

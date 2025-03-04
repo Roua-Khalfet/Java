@@ -5,7 +5,7 @@ public class Zoo {
     private Animal[] animals;
     private String name;
     private String city;
-    private final int nbrCages = 25;
+    private final int nbrCages = 3;
     private Aquatic[] aquaticAnimals;
     private int nbrAquaticAnimals = 0;
     private int nbrAnimals = 0;
@@ -44,13 +44,30 @@ public class Zoo {
 
     }
 
-    public boolean addAnimal(Animal animal) {
-        if (animal == null || isZooFull() || searchAnimal(animal) != -1) {
-            return false;
+//    public boolean addAnimal(Animal animal) {
+//        if (animal == null || isZooFull() || searchAnimal(animal) != -1) {
+//            return false;
+//        }
+//        animals[nbrAnimals++] = animal;
+//        return true;
+//    }
+
+    public void addAnimal(Animal animal) throws ZooFullException {
+        if (animal == null) {
+            throw new IllegalArgumentException("L'animal ne peut pas être null !");
         }
-        animals[nbrAnimals++] = animal;
-        return true;
+        if (searchAnimal(animal) != -1) {
+            throw new IllegalStateException("L'animal existe déjà dans le zoo !");
+        }
+        if (nbrAnimals >= nbrCages) { // Vérification du nombre de cages (zoo plein)
+            throw new ZooFullException("Impossible d'ajouter l'animal : le zoo est plein !");
+        }
+
+        animals[nbrAnimals++] = animal; // Ajout de l'animal
+        System.out.println("Animal ajouté avec succès. Nombre d'animaux : " + nbrAnimals);
     }
+
+
 
     public void displayAnimals() {
         System.out.println("Les animaux du zoo " + name + ":");

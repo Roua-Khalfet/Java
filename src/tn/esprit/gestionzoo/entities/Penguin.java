@@ -3,7 +3,7 @@ package tn.esprit.gestionzoo.entities;
 public class Penguin extends Aquatic {
     float swimmingDepth;
 
-    public Penguin(String name, int age, float swimmingDepth) {
+    public Penguin(String name, int age, float swimmingDepth) throws InvalidAgeException {
         super(name, "Penguin", age, false, "Cold Waters");
         this.swimmingDepth = swimmingDepth;
     }
